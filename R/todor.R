@@ -68,6 +68,7 @@ todor <- function(todo_types = NULL, search_path = getwd(), file = NULL) {
   }
   processed <- lapply(files, function(x) process_file(x, todo_types))
   names(processed) <- files
+  saveRDS(processed, file = "todor_marker.rds") # HLA
   markers <- create_markers(processed)
   build_rstudio_markers(markers)
 }
