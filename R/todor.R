@@ -32,6 +32,10 @@ todor <- function(todo_types = NULL, search_path = getwd(), file = NULL) {
     if (getOption("todor_rmd", FALSE)) {
       rmdfiles <- list_files_with_extension("Rmd", search_path)
       files <- c(files, rmdfiles)
+      pyfiles <- list_files_with_extension("py", search_path)  # hack HLA brutal sur 4 lignes
+      files <- c(files, pyfiles)
+      yamlfiles <- list_files_with_extension("yml", search_path)
+      files <- c(files, yamlfiles)
     }
     if (getOption("todor_rnw", FALSE)) {
       rnwfiles <- list_files_with_extension("Rnw", search_path)
