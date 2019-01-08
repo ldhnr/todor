@@ -36,6 +36,13 @@ todor <- function(todo_types = NULL, search_path = getwd(), file = NULL) {
       files <- c(files, pyfiles)
       yamlfiles <- list_files_with_extension("yml", search_path)
       files <- c(files, yamlfiles)
+      files <- files[!stringr::str_detect(files, "/packrat/")]
+      files <- files[!stringr::str_detect(files, "/x_todor/")]
+      files <- files[!stringr::str_detect(files, "/www/")]
+      files <- files[!stringr::str_detect(files, "/vignettes/")]
+      files <- files[!stringr::str_detect(files, "/data/")]
+      files <- files[!stringr::str_detect(files, "/log/")]
+      files <- files[!stringr::str_detect(files, "/z_documents_hors_git/")]       
     }
     if (getOption("todor_rnw", FALSE)) {
       rnwfiles <- list_files_with_extension("Rnw", search_path)
